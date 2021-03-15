@@ -148,11 +148,9 @@ public class AccountHolder implements Comparable<AccountHolder> {
 
     public double getSavingsBalance() {
         double total = 0;
-
         for (int i = 0; i < saveAccounts.length; i++) {
             total += saveAccounts[i].getBalance();
         }
-
         return total;
     }
 
@@ -182,30 +180,14 @@ public class AccountHolder implements Comparable<AccountHolder> {
 
     public double getCDBalance() {
         double total = 0;
-
         for (int i = 0; i < cdAccounts.length; i++) {
             total += cdAccounts[i].getBalance();
         }
-
         return total;
     }
 
     public double getCombinedBalance() {
-        double total = 0;
-
-        for (int i = 0; i < checkAccounts.length; i++) {
-            total += checkAccounts[i].getBalance();
-        }
-
-        for (int i = 0; i < saveAccounts.length; i++) {
-            total += saveAccounts[i].getBalance();
-        }
-
-        for (int i = 0; i < cdAccounts.length; i++) {
-            total += cdAccounts[i].getBalance();
-        }
-
-        return total;
+        return getCheckingBalance()+getSavingsBalance()+getCDBalance(); 
     }
 
     public String toString() {
@@ -219,10 +201,8 @@ public class AccountHolder implements Comparable<AccountHolder> {
     }
 
     public static AccountHolder readFromString(String accountHolderData) throws ParseException {
-
         String[] newAccountHolder = accountHolderData.split(",");
         return new AccountHolder(newAccountHolder[0], newAccountHolder[1], newAccountHolder[2], newAccountHolder[3]);
-
     }
 
     @Override
