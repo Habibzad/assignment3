@@ -85,12 +85,12 @@ public class AccountHolder implements Comparable<AccountHolder> {
             return null;
         } else {
             CheckingAccount[] checkingAccountsArray = new CheckingAccount[checkAccounts.length + 1];
-            int i;
-            for (i = 0; i < checkAccounts.length; i++) {
+            
+            for (int i = 0; i < checkAccounts.length; i++) {
             	checkingAccountsArray[i] = checkAccounts[i];
             }
 
-            checkingAccountsArray[i] = checkingAccount;
+            checkingAccountsArray[checkingAccountsArray.length-1] = checkingAccount;
             checkAccounts = checkingAccountsArray;
             return checkingAccount;
         }
